@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lmm.yudada.common.BaseResponse;
 import com.lmm.yudada.common.ErrorCode;
 import com.lmm.yudada.common.ResultUtils;
+import com.lmm.yudada.exception.BusinessException;
+import com.lmm.yudada.exception.ThrowUtils;
 import com.lmm.yudada.model.dto.post.PostQueryRequest;
 import com.lmm.yudada.model.dto.postfavour.PostFavourAddRequest;
 import com.lmm.yudada.model.dto.postfavour.PostFavourQueryRequest;
@@ -13,16 +15,14 @@ import com.lmm.yudada.model.vo.PostVO;
 import com.lmm.yudada.service.PostFavourService;
 import com.lmm.yudada.service.PostService;
 import com.lmm.yudada.service.UserService;
-import com.lmm.yudada.exception.BusinessException;
-import com.lmm.yudada.exception.ThrowUtils;
-
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * 帖子收藏接口

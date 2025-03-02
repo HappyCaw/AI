@@ -9,32 +9,21 @@ import com.lmm.yudada.common.ResultUtils;
 import com.lmm.yudada.constant.UserConstant;
 import com.lmm.yudada.exception.BusinessException;
 import com.lmm.yudada.exception.ThrowUtils;
+import com.lmm.yudada.model.dto.user.*;
 import com.lmm.yudada.model.entity.User;
 import com.lmm.yudada.model.vo.LoginUserVO;
 import com.lmm.yudada.model.vo.UserVO;
 import com.lmm.yudada.service.UserService;
 import com.lmm.yudada.service.impl.UserServiceImpl;
-import com.lmm.yudada.model.dto.user.UserAddRequest;
-import com.lmm.yudada.model.dto.user.UserLoginRequest;
-import com.lmm.yudada.model.dto.user.UserQueryRequest;
-import com.lmm.yudada.model.dto.user.UserRegisterRequest;
-import com.lmm.yudada.model.dto.user.UserUpdateMyRequest;
-import com.lmm.yudada.model.dto.user.UserUpdateRequest;
-
-import java.util.List;
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.util.DigestUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * 用户接口

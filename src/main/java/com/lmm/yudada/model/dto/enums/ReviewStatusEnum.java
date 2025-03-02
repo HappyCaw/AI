@@ -1,25 +1,30 @@
-package com.lmm.yudada.model.enums;
+package com.lmm.yudada.model.dto.enums;
+
+import org.apache.commons.lang3.ObjectUtils;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import org.apache.commons.lang3.ObjectUtils;
 
 /**
- * 文件上传业务类型枚举
+ * 应用类型枚举
  *
  * @author <a href="https://github.com/lilmm">程序员鱼皮</a>
  * @from <a href="https://lmm.icu">编程导航知识星球</a>
  */
-public enum FileUploadBizEnum {
+public enum ReviewStatusEnum {
 
-    USER_AVATAR("用户头像", "user_avatar");
+    //审核状态：0-待审核, 1-通过, 2-拒绝
+    WAIT("待审核", 0),
+    PASS("通过", 1),
+    REJECT("拒绝", 2);
+
 
     private final String text;
 
-    private final String value;
+    private final int value;
 
-    FileUploadBizEnum(String text, String value) {
+    ReviewStatusEnum(String text, int value) {
         this.text = text;
         this.value = value;
     }
@@ -29,7 +34,7 @@ public enum FileUploadBizEnum {
      *
      * @return
      */
-    public static List<String> getValues() {
+    public static List<Integer> getValues() {
         return Arrays.stream(values()).map(item -> item.value).collect(Collectors.toList());
     }
 
@@ -39,19 +44,19 @@ public enum FileUploadBizEnum {
      * @param value
      * @return
      */
-    public static FileUploadBizEnum getEnumByValue(String value) {
+    public static ReviewStatusEnum getEnumByValue(int value) {
         if (ObjectUtils.isEmpty(value)) {
             return null;
         }
-        for (FileUploadBizEnum anEnum : FileUploadBizEnum.values()) {
-            if (anEnum.value.equals(value)) {
+        for (ReviewStatusEnum anEnum : ReviewStatusEnum.values()) {
+            if (anEnum.value == (value)) {
                 return anEnum;
             }
         }
         return null;
     }
 
-    public String getValue() {
+    public int getValue() {
         return value;
     }
 

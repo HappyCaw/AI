@@ -4,7 +4,7 @@ import com.lmm.yudada.annotation.AuthCheck;
 import com.lmm.yudada.common.ErrorCode;
 import com.lmm.yudada.exception.BusinessException;
 import com.lmm.yudada.model.entity.User;
-import com.lmm.yudada.model.enums.UserRoleEnum;
+import com.lmm.yudada.model.dto.enums.UserRoleEnum;
 import com.lmm.yudada.service.UserService;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;

@@ -6,25 +6,25 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.lmm.yudada.common.ErrorCode;
 import com.lmm.yudada.constant.CommonConstant;
 import com.lmm.yudada.constant.UserConstant;
+import com.lmm.yudada.exception.BusinessException;
 import com.lmm.yudada.mapper.UserMapper;
+import com.lmm.yudada.model.dto.enums.UserRoleEnum;
 import com.lmm.yudada.model.dto.user.UserQueryRequest;
 import com.lmm.yudada.model.entity.User;
-import com.lmm.yudada.model.enums.UserRoleEnum;
 import com.lmm.yudada.model.vo.LoginUserVO;
 import com.lmm.yudada.model.vo.UserVO;
 import com.lmm.yudada.service.UserService;
 import com.lmm.yudada.utils.SqlUtils;
-import com.lmm.yudada.exception.BusinessException;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
-import javax.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 用户服务实现
@@ -47,7 +47,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         if (StringUtils.isAnyBlank(userAccount, userPassword, checkPassword)) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR, "参数为空");
         }
-        if (userAccount.length() < 4) {
+        if (userAccount.length() < 3) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR, "用户账号过短");
         }
         if (userPassword.length() < 8 || checkPassword.length() < 8) {
@@ -85,7 +85,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         if (StringUtils.isAnyBlank(userAccount, userPassword)) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR, "参数为空");
         }
-        if (userAccount.length() < 4) {
+        if (userAccount.length() < 3) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR, "账号错误");
         }
         if (userPassword.length() < 8) {
